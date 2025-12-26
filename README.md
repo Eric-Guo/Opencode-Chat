@@ -29,7 +29,7 @@ Add to your `opencode.json`:
 
 ```json
 {
-  "plugin": ["@howaboua/opencode-chat"]
+  "plugin": ["@howaboua/opencode-chat@latest"]
 }
 ```
 
@@ -39,7 +39,7 @@ OpenCode automatically installs the plugin on next launch.
 
 ```json
 {
-  "plugin": ["@howaboua/opencode-chat@0.1.4"]
+  "plugin": ["@howaboua/opencode-chat@0.1.5"]
 }
 ```
 

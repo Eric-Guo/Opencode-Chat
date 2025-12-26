@@ -29,9 +29,10 @@ export function createChatEdit(baseDir: string, repoRoot: string) {
 
 Usage:
 - Read the file first before editing
-- Preserve original formatting and indentation
-- Fails if oldString not found or matches multiple times
-- Use replaceAll for global replacements`,
+- EXACT MATCH REQUIRED: oldString must match character-for-character (case, whitespace, line breaks, Unicode)
+- Fails if oldString not found or appears multiple times (unless replaceAll=true)
+- Use replaceAll only when you want every occurrence replaced
+- Prefer chat_write for large or multi-section changes`,
       args: {
         filePath: tool.schema.string().describe("The absolute path to the file to modify"),
         oldString: tool.schema.string().describe("The text to replace"),

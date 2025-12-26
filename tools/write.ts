@@ -24,9 +24,9 @@ export function createChatWrite(baseDir: string, repoRoot: string) {
       description: `Write file contents.
 
 Usage:
-- Overwrites existing files completely
+- Overwrites entire file (no append)
 - Creates parent directories if needed
-- Use Edit tool for partial modifications`,
+- Use chat_edit for small targeted changes`,
       args: {
         content: tool.schema.string().describe("The content to write to the file"),
         filePath: tool.schema.string().describe("The absolute path to the file to write"),

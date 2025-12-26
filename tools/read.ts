@@ -58,9 +58,11 @@ export function createChatRead(baseDir: string) {
 
 Usage:
 - Returns line-numbered output
+- Shows end-of-file or continuation message
 - Default limit is 2000 lines
 - Use offset and limit for large files
-- Long lines (>2000 chars) are truncated`,
+- Long lines (>2000 chars) are truncated
+- Example: offset=99, limit=50 reads lines 100-150`,
       args: {
         filePath: tool.schema.string().describe("The path to the file to read"),
         offset: tool.schema.number().optional().describe("The line number to start reading from (0-based)"),
