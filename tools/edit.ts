@@ -8,8 +8,9 @@ import path from "path"
 import { tool } from "@opencode-ai/plugin"
 import { resolvePath } from "../util/paths"
 import { replaceOnce } from "../util/text"
+import type { ChatTool } from "../util/types"
 
-export function createChatEdit(baseDir: string, repoRoot: string) {
+export function createChatEdit(baseDir: string, repoRoot: string): ChatTool {
   const run = async (args: { filePath: string; oldString: string; newString: string; replaceAll?: boolean }) => {
     const filePath = resolvePath(baseDir, args.filePath)
     const content = await fs.readFile(filePath, "utf-8").catch(() => {

@@ -5,10 +5,11 @@
 import * as path from "path"
 import { tool } from "@opencode-ai/plugin"
 import { semanticSearch } from "../semantic"
+import type { ChatTool } from "../util/types"
 
 const DEFAULT_LIMIT = 5
 
-export function createChatSemanticSearch(worktree: string) {
+export function createChatSemanticSearch(worktree: string): ChatTool {
   const run = async (args: { query: string; limit?: number }) => {
     const query = args.query.trim()
     if (!query) throw new Error("Query cannot be empty")

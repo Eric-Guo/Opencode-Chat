@@ -4,11 +4,11 @@
  * Limits tool calls to keep execution predictable.
  */
 import { tool } from "@opencode-ai/plugin"
-import { ToolCall } from "../util/types"
+import { ToolCall, ChatTool } from "../util/types"
 
 type Runner = (params: Record<string, unknown>) => Promise<string>
 
-export function createChatBatch(runners: Record<string, Runner>, todoRead: () => Promise<string>) {
+export function createChatBatch(runners: Record<string, Runner>, todoRead: () => Promise<string>): ChatTool {
   const allRunners: Record<string, Runner> = {
     ...runners,
     chat_todoread: async () => todoRead(),

@@ -5,6 +5,7 @@
 import * as path from "path"
 import * as fs from "fs/promises"
 import { tool } from "@opencode-ai/plugin"
+import type { ChatTool } from "../util/types"
 
 interface SkillInfo {
   name: string
@@ -33,7 +34,7 @@ function parseFrontmatter(content: string): { data: Record<string, string>; cont
   return { data, content: body }
 }
 
-export function createChatSkill(baseDir: string) {
+export function createChatSkill(baseDir: string): ChatTool {
   const skillDir = path.join(baseDir, ".opencode", "skill")
 
   // Scan for skills in the repo's .opencode/skill directory
