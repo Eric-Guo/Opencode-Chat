@@ -14,8 +14,9 @@ import { createChatSkill } from "./skill"
 import { createChatRemember } from "./remember"
 import { createChatSemanticSearch } from "./semantic-search"
 import type { ToolDefinition } from "@opencode-ai/plugin"
+import type { ChatTool } from "../util/types"
 
-export function createChatTools(baseDir: string, repoRoot: string, todoPath: string) {
+export function createChatTools(baseDir: string, repoRoot: string, todoPath: string): { tools: Record<string, ToolDefinition>; runners: Record<string, (p: Record<string, unknown>) => Promise<string>>; toolIds: string[] } {
   const read = createChatRead(baseDir)
   const edit = createChatEdit(baseDir, repoRoot)
   const write = createChatWrite(baseDir, repoRoot)

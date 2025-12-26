@@ -6,8 +6,9 @@
 import { tool } from "@opencode-ai/plugin"
 import { TodoItem } from "../util/types"
 import { readTodoFile, writeTodoFile } from "../util/todo"
+import type { ChatTool } from "../util/types"
 
-export const todoSchema = tool.schema.object({
+const todoSchema = tool.schema.object({
   content: tool.schema.string().describe("Brief description of the task"),
   status: tool.schema
     .enum(["pending", "in_progress", "completed", "cancelled"])
@@ -16,7 +17,7 @@ export const todoSchema = tool.schema.object({
   id: tool.schema.string().describe("Unique identifier for the todo item"),
 })
 
-export function createChatTodo(todoPath: string) {
+export function createChatTodo(todoPath: string): { write: ChatTool; read: ChatTool } {
   const write = async (args: { todos: TodoItem[] }) => {
     const message = await writeTodoFile(todoPath, args.todos)
     return message + "\n" + JSON.stringify(args.todos, null, 2)

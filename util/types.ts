@@ -3,6 +3,8 @@
  * Keeps tool signatures consistent across modules and batch execution.
  * Extend cautiously to avoid widening interfaces unnecessarily.
  */
+import type { ToolDefinition } from "@opencode-ai/plugin"
+
 export type TodoItem = {
   content: string
   status: "pending" | "in_progress" | "completed" | "cancelled"
@@ -20,4 +22,11 @@ export type Match = {
   modTime: number
   lineNum: number
   lineText: string
+}
+
+export type ChatTool = {
+  id: string
+  run: (...args: any[]) => Promise<string>
+  tool: ToolDefinition
+  buildDescription?: () => Promise<string>
 }

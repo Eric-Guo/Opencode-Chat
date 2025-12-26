@@ -8,8 +8,9 @@ import { tool } from "@opencode-ai/plugin"
 import { DEFAULT_READ_LIMIT } from "../util/constants"
 import { resolvePath, isBlockedEnvPath, isImageExtension, isBinaryFile } from "../util/paths"
 import { trimLine } from "../util/text"
+import type { ChatTool } from "../util/types"
 
-export function createChatRead(baseDir: string) {
+export function createChatRead(baseDir: string): ChatTool {
   const run = async (args: { filePath: string; offset?: number; limit?: number }) => {
     const filePath = resolvePath(baseDir, args.filePath)
     if (isBlockedEnvPath(filePath)) {

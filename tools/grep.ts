@@ -9,6 +9,7 @@ import { MAX_GREP_MATCHES } from "../util/constants"
 import { resolvePath, isBinaryFile } from "../util/paths"
 import { trimLine } from "../util/text"
 import { Match } from "../util/types"
+import type { ChatTool } from "../util/types"
 
 function formatMatches(matches: Match[], truncated: boolean) {
   const outputLines = [`Found ${matches.length} matches`]
@@ -30,7 +31,7 @@ function formatMatches(matches: Match[], truncated: boolean) {
   return outputLines.join("\n")
 }
 
-export function createChatGrep(baseDir: string) {
+export function createChatGrep(baseDir: string): ChatTool {
   const run = async (args: { pattern: string; path?: string; include?: string }) => {
     const searchRoot = resolvePath(baseDir, args.path ?? baseDir)
     let matcher: RegExp
