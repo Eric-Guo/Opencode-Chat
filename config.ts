@@ -40,7 +40,7 @@ const NATIVE_TOOLS = [
 // Tools for Just Chat: web research and conversation
 // Uses native tools directly (no chat_* wrappers needed)
 const JUST_CHAT_NATIVE = ["webfetch", "websearch"]
-const JUST_CHAT_TOOLS = ["chat_remember", "chat_todowrite", "chat_todoread"]
+const JUST_CHAT_TOOLS = ["chat_remember", "chat_todowrite", "chat_todoread", "chat_semantic_search"]
 
 // Native tools to enable for Tool Chat (in addition to chat_* tools)
 const TOOL_CHAT_NATIVE = ["websearch", "webfetch"]

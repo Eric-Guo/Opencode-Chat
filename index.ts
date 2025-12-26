@@ -12,11 +12,14 @@ import { createChatTools } from "./tools"
 import { ensureSemanticIndex, ensureModel } from "./semantic"
 
 export const ChatifierPlugin: Plugin = async ({ directory, worktree }) => {
-  const todoPath = path.join(worktree, TODO_FILENAME)
+  // Fall back to directory if worktree is empty (not a git repo)
+  const root = worktree && worktree !== "/" ? worktree : directory
 
-  await ensureModel(worktree)
+  const todoPath = path.join(root, TODO_FILENAME)
 
-  const result = await ensureSemanticIndex(worktree, {
+  await ensureModel(root)
+
+  const result = await ensureSemanticIndex(root, {
     mode: "changed",
     maxTargets: 100,
     onProgress: (progress) => {
@@ -41,7 +44,7 @@ export const ChatifierPlugin: Plugin = async ({ directory, worktree }) => {
     console.log(`[semantic] index up to date (${result.skipped} files unchanged)`)
   }
 
-  const chatTools = createChatTools(directory, worktree, todoPath)
+  const chatTools = createChatTools(directory, root, todoPath)
 
   return {
     config: async (config) => {

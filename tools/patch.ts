@@ -51,24 +51,24 @@ CREATE A NEW FILE:
 REPLACE A LINE (must include both - and +):
 *** Begin Patch
 *** Update File: path/to/file.txt
-@@ function hello() {
--  return "old"
-+  return "new"
+@@ any header or section line
+-  old text
++  new text
 *** End Patch
 
 DELETE A LINE (use - with no +):
 *** Begin Patch
 *** Update File: path/to/file.txt
-@@ const config = {
--  debug: true,
+@@ any header or section line
+-  remove this line
 *** End Patch
 
 INSERT A NEW LINE (use space prefix for context, then +):
 *** Begin Patch
 *** Update File: path/to/file.txt
-@@ import React from "react"
- import React from "react"
-+import { useState } from "react"
+@@ any header or section line
+  kept line
++new line
 *** End Patch
 
 DELETE A FILE:

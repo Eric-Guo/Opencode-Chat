@@ -41,10 +41,10 @@ export function createChatSemanticSearch(worktree: string) {
     id: "chat_semantic_search",
     run,
     tool: tool({
-      description: `Semantic search over repo files using local embeddings.
+      description: `Semantic search over project files using local embeddings.
 
 Usage:
-- Best for natural language queries ("where is auth handled")
+- Best for natural language queries ("where is that explained")
 - Returns file + line ranges + snippet
 - Indexing is incremental based on file mtime`,
       args: {

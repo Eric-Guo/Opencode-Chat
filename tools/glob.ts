@@ -40,7 +40,7 @@ export function createChatGlob(baseDir: string) {
       description: `Find files by pattern.
 
 Usage:
-- Supports glob patterns like "**/*.txt" or "docs/**/*.md"
+- Supports glob patterns like "**/*.txt" or "notes/**/*.md"
 - Returns files sorted by modification time
 - Results truncated at 100 files`,
       args: {

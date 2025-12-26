@@ -10,10 +10,10 @@ A conversational coding assistant plugin for OpenCode with semantic code search.
 
 ### Chat Agents
 
-| Agent         | Purpose                                              |
-| ------------- | ---------------------------------------------------- |
-| **Just Chat** | Quick questions, web research, remembering context   |
-| **Tool Chat** | Full coding toolkit with semantic search and editing |
+| Agent         | Purpose                                                |
+| ------------- | ------------------------------------------------------ |
+| **Just Chat** | Quick questions, web research, semantic search, memory |
+| **Tool Chat** | Full toolkit with files, semantic search, and memory   |
 
 ### Features
 
@@ -39,7 +39,7 @@ OpenCode automatically installs the plugin on next launch.
 
 ```json
 {
-  "plugin": ["@howaboua/opencode-chat@0.1.0"]
+  "plugin": ["@howaboua/opencode-chat@0.1.2"]
 }
 ```
 
