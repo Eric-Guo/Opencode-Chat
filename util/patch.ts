@@ -103,18 +103,26 @@ function parseUpdateChunks(lines: string[], startIdx: number) {
 }
 
 function parseAddContent(lines: string[], startIdx: number) {
-  let content = ""
+  const contentLines: string[] = []
   let i = startIdx
 
   while (i < lines.length && !lines[i].startsWith("***")) {
-    if (lines[i].startsWith("+")) {
-      content += lines[i].substring(1) + "\n"
+    const line = lines[i]
+    if (line.startsWith("+")) {
+      contentLines.push(line.substring(1))
+      i++
+      continue
     }
+    if (line.startsWith(" ")) {
+      contentLines.push(line.substring(1))
+      i++
+      continue
+    }
+    contentLines.push(line)
     i++
   }
 
-  if (content.endsWith("\n")) content = content.slice(0, -1)
-  return { content, nextIdx: i }
+  return { content: contentLines.join("\n"), nextIdx: i }
 }
 
 export function parsePatch(patchText: string) {

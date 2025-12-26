@@ -36,47 +36,39 @@ export function createChatPatch(baseDir: string) {
 FORMAT RULES:
 - Start with: *** Begin Patch
 - End with: *** End Patch
-- Lines starting with "-" are REMOVED from the file
-- Lines starting with "+" are ADDED to the file  
-- Lines starting with " " (space) are kept unchanged (context)
-- @@ marks a context line to LOCATE where changes happen
+- Use *** Add File / *** Update File / *** Delete File
+- Lines starting with "-" are REMOVED
+- Lines starting with "+" are ADDED
+- Lines starting with " " are CONTEXT
+- @@ line is required for updates and must include a context line that exists in the target file
 
-CREATE A NEW FILE:
+NEW FILE (all content lines MUST start with "+"):
 *** Begin Patch
 *** Add File: path/to/new.txt
-+first line of new file
-+second line of new file
++first line
++second line
 *** End Patch
 
-REPLACE A LINE (must include both - and +):
+UPDATE (must include both "-" and "+" for replacements):
 *** Begin Patch
 *** Update File: path/to/file.txt
-@@ any header or section line
--  old text
-+  new text
-*** End Patch
-
-DELETE A LINE (use - with no +):
-*** Begin Patch
-*** Update File: path/to/file.txt
-@@ any header or section line
--  remove this line
-*** End Patch
-
-INSERT A NEW LINE (use space prefix for context, then +):
-*** Begin Patch
-*** Update File: path/to/file.txt
-@@ any header or section line
-  kept line
+@@ exact existing line
+-old line
 +new line
 *** End Patch
 
-DELETE A FILE:
+INSERT (use context + then "+" lines):
 *** Begin Patch
-*** Delete File: path/to/remove.txt
+*** Update File: path/to/file.txt
+@@ exact existing line
+ exact existing line
++inserted line
 *** End Patch
 
-IMPORTANT: To replace a line, you MUST use "-oldline" then "+newline". The @@ line only locates WHERE to make changes.`,
+DELETE FILE:
+*** Begin Patch
+*** Delete File: path/to/remove.txt
+*** End Patch`,
       args: {
         patchText: tool.schema
           .string()
