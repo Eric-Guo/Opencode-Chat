@@ -24,7 +24,6 @@ const NATIVE_TOOLS = [
   "grep",
   "webfetch",
   "websearch",
-  "codesearch",
   "task",
   "todowrite",
   "todoread",
